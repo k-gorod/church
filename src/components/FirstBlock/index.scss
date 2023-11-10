@@ -1,0 +1,41 @@
+.app {
+  &_block {
+    &_firstBlock {
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      cursor: default;
+      height: 100lvh;
+
+      &_title {
+        font-size: 100px;
+        font-weight: 700;
+        color: white;
+        text-shadow: 0 0 3px rgb(255, 255, 181);
+        margin: 0 0 20px 0;
+        user-select: none;
+
+        @media (max-width: 800px) {
+          font-size: 60px;
+        }
+      }
+
+      &_desc {
+        color: rgb(255, 255, 181);
+        padding: 0 40px;
+
+        span {
+          display: inline-block;
+          padding: 20px 10px 5px;
+          color: white;
+          border-bottom: 2px solid white;
+          opacity: 0.8;
+        }
+      }
+
+      * {
+        text-align: center;
+      }
+    }
+  }
+}

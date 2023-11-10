@@ -1,0 +1,30 @@
+@import "../../styles/constants.scss";
+
+.app {
+  &_block {
+    &_aboutUs {
+      padding: 20px 0 60px;
+      background: $backgroun-main;
+      text-align: center;
+      overflow: hidden;
+
+      p {
+        color: white;
+        font-size: 24px;
+        padding: 0 40px;
+        margin-bottom: 60px;
+
+        @media (max-width: 800px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}
+
+.aboutUs {
+  &_wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}

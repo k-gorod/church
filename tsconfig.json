@@ -47,7 +47,7 @@
     ],
     "noErrorTruncation": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "index.d.ts"],
   "filesGlob": ["src/**/*.ts", "src/**/*.tsx"],
   "types": ["react"],
   "exclude": ["**/*.spec.ts", "node_modules", "vendor", "public"],

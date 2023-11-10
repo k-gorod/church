@@ -27,6 +27,14 @@ module.exports = {
         test: /\.(sass|less|css|scss)$/,
         use: ["style-loader", "css-loader", "sass-loader"],
       },
+      {
+        test: /\.(png|jpeg|jpg|mov|mp4)$/i,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
     ],
   },
 
@@ -37,10 +45,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./public/index.html",
     }),
-    new webpack.ProvidePlugin({
-      "window.Quill": "quill/dist/quill.js",
-      Quill: "quill/dist/quill.js",
-    }),
+    // new webpack.ProvidePlugin({
+    //   "window.Quill": "quill/dist/quill.js",
+    //   Quill: "quill/dist/quill.js",
+    // }),
   ],
   resolve: {
     plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json" })],
