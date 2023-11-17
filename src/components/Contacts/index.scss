@@ -1,0 +1,61 @@
+@import "../../styles/constants.scss";
+
+.app_block {
+  &_contacts {
+    background: $backgroun-main;
+    padding: 20px 0 60px;
+    display: grid;
+
+    &_link {
+      color: rgba(255, 255, 255, 0.8);
+      text-align: center;
+      margin: 10px;
+      font-size: 20px;
+    }
+
+    &_pastor {
+      padding: 0 0 40px;
+      text-align: center;
+
+      &_image {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: $backgroun-main;
+        margin: 30px auto 10px;
+      }
+      &_text {
+        color: white;
+        text-align: center;
+        font-size: 30px;
+        margin: 10px 0;
+
+        &_underline {
+          color: rgba(255, 255, 255, 0.5);
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.contacts {
+  &_coordinates {
+    display: grid;
+  }
+
+  &_socials {
+    box-sizing: border-box;
+    max-width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_wrapper {
+    display: grid;
+  }
+}

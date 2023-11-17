@@ -1,0 +1,23 @@
+.app_block {
+  &_videoBlock {
+    padding: 0 20px 40px 20px;
+    overflow: hidden;
+
+    iframe {
+      width: 80dvw;
+      max-width: 1400px;
+      height: 50dvw;
+      max-height: 650px;
+      pointer-events: none;
+    }
+  }
+}
+
+.aboutUs_slider_video {
+  min-height: 700px;
+  z-index: inherit;
+
+  @media (max-width: 1200px) {
+    min-height: 55dvw;
+  }
+}

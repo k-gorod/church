@@ -1,13 +1,13 @@
 .app {
   &_slider {
-    position: relative;
-    height: 600px;
-    width: 350px;
-    margin: auto;
+    width: 100%;
 
-    @media (min-width: 800px) {
-      height: 900px;
-      width: 500px;
+    &_wrapper {
+      position: relative;
+      margin: auto;
+      left: 50%;
+      transform: translateX(-50%);
+      height: 100%;
     }
   }
 }
@@ -15,9 +15,9 @@
 .slider {
   &_slide {
     position: absolute;
-    background: white;
-    width: 100%;
-    height: 100%;
+    left: 50%;
+    min-width: 40%; // to do not conflict with clicable area
+
     transition: opacity 0.4s, z-index 0.4s, transform 0.4s;
     border-radius: 10px;
   }

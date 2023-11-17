@@ -11,10 +11,6 @@
   "dependencies": {
     "@babel/preset-react": "^7.22.15",
     "@babel/preset-typescript": "^7.23.2",
-    "@emotion/react": "^11.11.1",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.14.16",
-    "@mui/material": "^5.14.17",
     "@types/node": "^20.9.0",
     "anim-react": "^1.1.212",
     "babel-loader": "^9.1.3",

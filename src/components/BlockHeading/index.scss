@@ -1,6 +1,8 @@
+@import "../../styles/constants.scss";
+
 .blockHeading {
   text-align: center;
   color: white;
   font-size: 52px;
-  text-shadow: 0 0 3px rgb(255, 255, 181);
+  text-shadow: 0 0 3px $light-up-yellow;
 }

@@ -28,7 +28,8 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
       },
       {
-        test: /\.(png|jpeg|jpg|mov|mp4)$/i,
+        test: /\.(png|jpeg|jpg|mov|mp4|ico)$/i,
+        // type: "asset",
         use: [
           {
             loader: "file-loader",

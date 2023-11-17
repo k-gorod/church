@@ -8,7 +8,7 @@
       text-align: center;
       overflow: hidden;
 
-      p {
+      &_text {
         color: white;
         font-size: 24px;
         padding: 0 40px;
@@ -26,5 +26,14 @@
   &_wrapper {
     max-width: 1400px;
     margin: 0 auto;
+  }
+
+  &_slider_ministry {
+    min-height: 900px;
+    position: relative;
+
+    @media (max-width: 800px) {
+      min-height: 600px;
+    }
   }
 }

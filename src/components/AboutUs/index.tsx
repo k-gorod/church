@@ -1,5 +1,4 @@
-import React, { useRef, type FC } from "react";
-import image from "../../assets/light-up.jpg";
+import React, { useRef, type FC, useEffect } from "react";
 
 import BlockHeading from "components/BlockHeading";
 
@@ -7,34 +6,42 @@ import { useAnim } from "anim-react";
 import Slider from "components/Slider";
 
 import "./index.scss";
+import { getBlockPosition } from "hooks/getBlockPosition";
+import ChurchMinistrySlide from "components/ChurchMinistrySlide";
+import { aboutUsSlides } from "components/AboutUs/index.config";
 
 interface IAboutUs {}
 
-const fakeSlides = Array(10).fill({ text: "Helllo", src: image });
-
 const AboutUs: FC<IAboutUs> = () => {
-  const ref = useRef(null);
+  const refP = useRef(null);
+  const aboutUsBlockRef = useRef(null);
 
   useAnim({
-    ref: ref,
+    ref: refP,
     animName: "slideFromBottom",
     userConfig: {
       startInSight: true,
     },
   });
 
+  getBlockPosition("aboutBlock", aboutUsBlockRef);
+
   return (
-    <div className="app_block app_block_aboutUs">
+    <div ref={aboutUsBlockRef} className="app_block app_block_aboutUs">
       <div className="app_block_aboutUs_wrapper aboutUs_wrapper">
-        <div ref={ref}>
+        <div>
           <BlockHeading>О нас</BlockHeading>
-          <p>
+          <p ref={refP} className="app_block_aboutUs_text">
             Христианская церковь полного Евангелия "Свет Миру", двери которой
             более двадцати лет открыты для каждого, желающего окунуться в
             атмосферу Божьей любви и принятия.
           </p>
         </div>
-        <Slider slides={fakeSlides} />
+        <Slider
+          className="aboutUs_slider_ministry"
+          slides={aboutUsSlides}
+          SlideComponent={ChurchMinistrySlide}
+        />
       </div>
     </div>
   );

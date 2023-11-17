@@ -1,3 +1,5 @@
+@import "../../styles/constants.scss";
+
 .app {
   &_block {
     &_firstBlock {
@@ -6,12 +8,13 @@
       align-content: center;
       cursor: default;
       height: 100lvh;
+      overflow: hidden;
 
       &_title {
         font-size: 100px;
         font-weight: 700;
         color: white;
-        text-shadow: 0 0 3px rgb(255, 255, 181);
+        text-shadow: 0 0 3px $light-up-yellow;
         margin: 0 0 20px 0;
         user-select: none;
 
@@ -21,7 +24,7 @@
       }
 
       &_desc {
-        color: rgb(255, 255, 181);
+        color: $light-up-yellow;
         padding: 0 40px;
 
         span {

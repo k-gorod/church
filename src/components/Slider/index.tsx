@@ -1,14 +1,24 @@
 import Slide, { ISlide } from "components/Slider/Slide";
-import React, { useState, type FC, useEffect, useRef } from "react";
+import React, {
+  useState,
+  type FC,
+  useEffect,
+  useRef,
+  useMemo,
+  ReactNode,
+} from "react";
 import "./index.scss";
 import { useAnim } from "anim-react";
 import { blindSwape } from "components/Slider/index.config";
+import { SlideLiskov } from "types";
 
 interface ISlider {
-  slides: { src: string; text: string }[];
+  slides: any[];
+  SlideComponent: FC<SlideLiskov>;
+  className: string;
 }
 
-const Slider: FC<ISlider> = ({ slides }) => {
+const Slider: FC<ISlider> = ({ slides, SlideComponent, className }) => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -17,10 +27,7 @@ const Slider: FC<ISlider> = ({ slides }) => {
 
   useAnim({
     ref: ref,
-    animName: "slideFromBottom",
-    userConfig: {
-      startInSight: true,
-    },
+    animName: "opacityAppear",
   });
 
   const onSliderClick: React.MouseEventHandler<HTMLDivElement> = (e) => {
@@ -30,8 +37,10 @@ const Slider: FC<ISlider> = ({ slides }) => {
 
     const { left, right } = rect;
 
+    const clickable = (right - left) * 0.3;
+
     setCurrentSlide((prev) => {
-      if (e.clientX < left || e.clientX > right) {
+      if (e.clientX < left + clickable || e.clientX > right - clickable) {
         if (e.clientX < window.innerWidth / 2) {
           return prev === 0 ? 0 : prev - 1;
         } else {
@@ -63,7 +72,7 @@ const Slider: FC<ISlider> = ({ slides }) => {
   };
 
   const touchSliderTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
-    const offset = e.touches[0].clientX - touchStart;
+    const offset = e.changedTouches[0].clientX - touchStart;
 
     setOffset(() => {
       if (offset > 0) {
@@ -77,20 +86,23 @@ const Slider: FC<ISlider> = ({ slides }) => {
   return (
     <div
       ref={ref}
-      className="app_slider"
+      className={`app_slider ${className}`}
       onClick={onSliderClick}
       onTouchStart={onSliderTouchStart}
       onTouchEnd={onSliderTouchEnd}
       onTouchMove={touchSliderTouchMove}
     >
-      {slides.map((el, i) => (
-        <Slide
-          key={`${i}-componentSlide`}
-          status={i - currentSlide}
-          data={el}
-          offsetNumber={offset}
-        />
-      ))}
+      <div className="app_slider_wrapper">
+        {slides.map((el, i) => (
+          <Slide
+            key={`${i}-componentSlide`}
+            status={i - currentSlide}
+            data={el}
+            offsetNumber={offset}
+            SlideComponent={SlideComponent}
+          />
+        ))}
+      </div>
     </div>
   );
 };
